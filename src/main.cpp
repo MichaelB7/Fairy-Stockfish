@@ -41,6 +41,7 @@ int main(int argc, char* argv[]) {
   pieceMap.init();
   variants.init();
   UCI::init(Options);
+  Tune::init();
   PSQT::init(variants.find("chess")->second);
   Bitboards::init();
   Position::init();
