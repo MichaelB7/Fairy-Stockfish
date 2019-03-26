@@ -387,6 +387,24 @@ VariantMap variants; // Global object
         v->castling = false;
         return v;
     }
+    Variant* gardner_variant() {
+        Variant* v = fairy_variant_base();
+        v->maxRank = RANK_5;
+        v->maxFile = FILE_E;
+        v->startFen = "rnbqk/ppppp/5/PPPPP/RNBQK w - - 0 1";
+        v->promotionRank = RANK_5;
+        v->doubleStep = false;
+        v->castling = false;
+        return v;
+    }
+    Variant* gardner_orig_variant() {
+        Variant* v = fairy_variant_base();
+        v->maxRank = RANK_5;
+        v->maxFile = FILE_E;
+        v->startFen = "rnbqk/ppppp/5/PPPPP/RNBQK w Qq - 0 1";
+        v->promotionRank = RANK_5;
+        return v;
+    }
     Variant* almost_variant() {
         Variant* v = chess_variant();
         v->remove_piece(QUEEN);
@@ -601,6 +619,8 @@ void VariantMap::init() {
     add("judkins", judkinsshogi_variant());
     add("euroshogi", euroshogi_variant());
     add("losalamos", losalamos_variant());
+    add("gardner", gardner_variant());
+    add("gardner2", gardner_orig_variant());
     add("almost", almost_variant());
     add("chigorin", chigorin_variant());
     add("shatar", shatar_variant());
