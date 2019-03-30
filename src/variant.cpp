@@ -387,6 +387,17 @@ VariantMap variants; // Global object
         v->castling = false;
         return v;
     }
+    Variant* anti_losalamos_variant() {
+        Variant* v = losalamos_variant();
+        v->remove_piece(KING);
+        v->add_piece(COMMONER, 'k');
+        v->promotionPieceTypes = {COMMONER, QUEEN, ROOK, KNIGHT};
+        v->stalemateValue = VALUE_MATE;
+        v->extinctionValue = VALUE_MATE;
+        v->extinctionPieceTypes = {ALL_PIECES};
+        v->mustCapture = true;
+        return v;
+    }
     Variant* almost_variant() {
         Variant* v = chess_variant();
         v->remove_piece(QUEEN);
@@ -601,6 +612,7 @@ void VariantMap::init() {
     add("judkins", judkinsshogi_variant());
     add("euroshogi", euroshogi_variant());
     add("losalamos", losalamos_variant());
+    add("anti-losalamos", anti_losalamos_variant());
     add("almost", almost_variant());
     add("chigorin", chigorin_variant());
     add("shatar", shatar_variant());
