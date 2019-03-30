@@ -190,6 +190,14 @@ VariantMap variants; // Global object
         v->maxCheckCount = CheckCount(3);
         return v;
     }
+    Variant* threecheck_crazyhouse_variant() {
+        Variant* v = fairy_variant_base();
+        v->startFen = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR[] w KQkq - 3+3 0 1";
+        v->pieceDrops = true;
+        v->capturesToHand = true;
+        v->maxCheckCount = CheckCount(3);
+        return v;
+    }
     Variant* fivecheck_variant() {
         Variant* v = fairy_variant_base();
         v->startFen = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 5+5 0 1";
@@ -587,6 +595,7 @@ void VariantMap::init() {
     add("3check", threecheck_variant());
     add("5check", fivecheck_variant());
     add("crazyhouse", crazyhouse_variant());
+    add("3check-crazyhouse", threecheck_crazyhouse_variant());
     add("loop", loop_variant());
     add("chessgi", chessgi_variant());
     add("pocketknight", pocketknight_variant());
