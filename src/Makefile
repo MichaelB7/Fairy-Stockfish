@@ -70,7 +70,7 @@ endif
 # at the end of the line for flag values.
 
 ### 2.1. General and architecture defaults
-largeboards = no
+largeboards = yes
 precomputedmagics = yes
 optimize = yes
 debug = no
