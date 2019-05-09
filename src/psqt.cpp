@@ -21,6 +21,7 @@
 #include <algorithm>
 
 #include "types.h"
+#include "uci.h"
 #include "variant.h"
 
 Value PieceValue[PHASE_NB][PIECE_NB] = {
@@ -156,5 +157,15 @@ void init(const Variant* v) {
       psq[~pc][SQ_NONE] = -psq[pc][SQ_NONE];
   }
 }
+
+void init_cur() { init(variants.find(Options["UCI_Variant"])->second); }
+
+TUNE(PieceValue[MG][ARCHBISHOP], PieceValue[EG][ARCHBISHOP],
+     PieceValue[MG][CHANCELLOR], PieceValue[EG][CHANCELLOR],
+     PieceValue[MG][ALFIL], PieceValue[EG][ALFIL],
+     PieceValue[MG][FERS], PieceValue[EG][FERS],
+     PieceValue[MG][COMMONER], PieceValue[EG][COMMONER],
+     PieceValue[MG][WAZIR], PieceValue[EG][WAZIR],
+     init_cur);
 
 } // namespace PSQT
