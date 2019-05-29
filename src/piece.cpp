@@ -203,6 +203,12 @@ namespace {
       PieceInfo* p = new PieceInfo();
       return p;
   }
+  PieceInfo* cannon_piece() {
+      PieceInfo* p = new PieceInfo();
+      p->sliderQuiet = {NORTH, EAST, SOUTH, WEST};
+      p->hopperCapture = {NORTH, EAST, SOUTH, WEST};
+      return p;
+  }
 }
 
 void PieceMap::init() {
@@ -230,6 +236,7 @@ void PieceMap::init() {
   add(CLOBBER_PIECE, clobber_piece());
   add(BREAKTHROUGH_PIECE, breakthrough_piece());
   add(IMMOBILE_PIECE, immobile_piece());
+  add(CANNON, cannon_piece());
   add(WAZIR, wazir_piece());
   add(COMMONER, king_piece());
   add(KING, king_piece());
