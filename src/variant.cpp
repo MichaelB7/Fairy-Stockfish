@@ -595,6 +595,25 @@ VariantMap variants; // Global object
                       "pPpPpPpPpP/PpPpPpPpPp/pPpPpPpPpP/PpPpPpPpPp/pPpPpPpPpP w 0 1";
         return v;
     }
+    Variant* xiangqi_variant() {
+        Variant* v = fairy_variant_base();
+        v->maxRank = RANK_10;
+        v->maxFile = FILE_I;
+        v->reset_pieces();
+        v->add_piece(ROOK, 'r');
+        v->add_piece(KNIGHT, 'h'); // TODO: horse
+        v->add_piece(ALFIL, 'e'); // TODO: elephant
+        v->add_piece(FERS, 'a'); // TODO: advisor
+        v->add_piece(KING, 'k');
+        v->add_piece(CANNON, 'c');
+        v->add_piece(SHOGI_PAWN, 'p'); // TODO: promoted pawn
+        v->startFen = "rheakaehr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RHEAKAEHR w - - 0 1";
+        v->promotionPieceTypes = {};
+        v->doubleStep = false;
+        v->castling = false;
+        v->stalemateValue = -VALUE_MATE;
+        return v;
+    }
 #endif
 
 
@@ -654,6 +673,7 @@ void VariantMap::init() {
     add("jesonmor", jesonmor_variant());
     add("courier", courier_variant());
     add("clobber10", clobber10_variant());
+    add("xiangqi", xiangqi_variant());
 #endif
 }
 
